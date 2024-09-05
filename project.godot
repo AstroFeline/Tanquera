@@ -12,13 +12,16 @@ config_version=5
 
 config/name="Tanquera"
 run/main_scene="res://Game/Levels/MainLevel.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
-
-[display]
-
-window/size/mode=2
 
 [dotnet]
 
 project/assembly_name="Tanquera"
+
+[layer_names]
+
+3d_physics/layer_1="Floor"
+3d_physics/layer_2="Walls"
+3d_physics/layer_3="Fishes"
+3d_physics/layer_5="Atrezzo"
