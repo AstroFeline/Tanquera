@@ -1,0 +1,9 @@
+Objetivos:
+- acabar el juego
+- que sea simplón 
+- forma de juego:
+	- capturar peces (sólo una especie).
+	- el pez da Money
+	- se pueden crear peces - a través de reproducción
+	- gameover si sólo queda un pez o 0 cagaste
+	- 2 peces crean un tercer pez cada X tiempo a través de un huevo que al fondo
