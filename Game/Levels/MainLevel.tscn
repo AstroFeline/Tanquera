@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://x3rpkedabitf"]
+[gd_scene load_steps=9 format=3 uid="uid://x3rpkedabitf"]
 
 [ext_resource type="PackedScene" uid="uid://dtt2ygviijks6" path="res://Game/Fishes/Normie.tscn" id="1_ogrhp"]
 
@@ -21,10 +21,15 @@ ambient_light_color = Color(0.698039, 0.85098, 1, 1)
 ambient_light_energy = 1.19
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6yug"]
+size = Vector3(0.001, 91.256, 29.0425)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uw0mh"]
+
 [node name="MainLevel" type="Node3D"]
 
 [node name="Water" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.51861, 0, 0, 0, 83.1748, 0, 0, 0, 232.772, 2.33232, 0, 0)
+transform = Transform3D(5.51861, 0, 0, 0, 83.1748, 0, 0, 0, 232.772, 2.82567, -1.29357, 0.414883)
 mesh = SubResource("BoxMesh_uyy1s")
 surface_material_override/0 = SubResource("StandardMaterial3D_lto5c")
 
@@ -44,3 +49,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63489, 0, 3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0poln")
+
+[node name="leftwall" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.991725, 0, -0.12838, 0, 1, 0, 0.12838, 0, -0.991725, 0, 0, 26.9352)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="leftwall"]
+shape = SubResource("BoxShape3D_w6yug")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="leftwall/CollisionShape3D"]
+transform = Transform3D(15, 0, 0, 0, 81.05, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("BoxMesh_uw0mh")
+
+[node name="rightwall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.7467)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rightwall"]
+shape = SubResource("BoxShape3D_w6yug")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rightwall/CollisionShape3D"]
+transform = Transform3D(15, 0, 0, 0, 81.05, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("BoxMesh_uw0mh")
