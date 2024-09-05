@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://x3rpkedabitf"]
+
+[ext_resource type="PackedScene" uid="uid://dtt2ygviijks6" path="res://Game/Fishes/Normie.tscn" id="1_ogrhp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uyy1s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lto5c"]
+transparency = 1
+albedo_color = Color(0.603922, 0.733333, 1, 0.780392)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2n808"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvcew"]
+albedo_color = Color(0.894305, 0.962193, 0.642166, 1)
+
+[sub_resource type="Environment" id="Environment_0poln"]
+background_mode = 1
+background_color = Color(0.786347, 0.786347, 0.786347, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.698039, 0.85098, 1, 1)
+ambient_light_energy = 1.19
+glow_enabled = true
+
+[node name="MainLevel" type="Node3D"]
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.51861, 0, 0, 0, 83.1748, 0, 0, 0, 232.772, 2.33232, 0, 0)
+mesh = SubResource("BoxMesh_uyy1s")
+surface_material_override/0 = SubResource("StandardMaterial3D_lto5c")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.6422, 0, 0, 0, 167.117, 0, 0, 0, 395.53, -15.1963, 0, -7.00726)
+mesh = SubResource("BoxMesh_2n808")
+surface_material_override/0 = SubResource("StandardMaterial3D_xvcew")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.0546, 0, -0.0594282)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 13.8008)
+
+[node name="Normie" parent="." instance=ExtResource("1_ogrhp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63489, 0, 3)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0poln")
