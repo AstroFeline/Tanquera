@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://x3rpkedabitf"]
+[gd_scene load_steps=14 format=3 uid="uid://x3rpkedabitf"]
 
 [ext_resource type="PackedScene" uid="uid://dtt2ygviijks6" path="res://Game/Fishes/Normie.tscn" id="1_ogrhp"]
+[ext_resource type="PackedScene" uid="uid://dm4115jaovloi" path="res://Game/Boat/Boat.glb" id="2_22uxd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uyy1s"]
 
@@ -100,3 +101,11 @@ shape = SubResource("SphereShape3D_wp03t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Piedrecita"]
 transform = Transform3D(2.80623, 0, 0, 0, 2.80623, 0, 0, 0, 2.80623, 0, 0, 0)
 mesh = SubResource("SphereMesh_f2cv2")
+
+[node name="Boat" type="RigidBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+
+[node name="Root Scene" parent="Boat" instance=ExtResource("2_22uxd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.7066, 38.5054)
