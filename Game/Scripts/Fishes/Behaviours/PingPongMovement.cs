@@ -3,6 +3,8 @@ using System;
 
 public partial class PingPongMovement : Node3D
 {
+	[Export]
+	RayCast3D laser;
 
 	[Export]
 	RigidBody3D fishBody;
@@ -10,7 +12,7 @@ public partial class PingPongMovement : Node3D
 	[Export]
 	float SwimSpeed = 2;
 
-	// Called when the node enters the scene tree for the first time.
+	// El ready es para asignar propiedades y subscribirse a eventos ya que solo se tira una vez.
 	public override void _Ready()
 	{
 		// SETUP del pescado
@@ -21,18 +23,28 @@ public partial class PingPongMovement : Node3D
 
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	// el _Process tira a todo lo que da el procesador, sin miramientos, depende de la maquina del user
 	public override void _Process(double delta)
 	{
+
+	}
+
+	// el physicsProcess tiene unos ticks marcados por defecto
+	public override void _PhysicsProcess(double delta)
+	{
+		// EL LASER HA TOCADO ALGO
+		if(laser.IsColliding()){
+			GD.Print("EL LASER HA TOCAT COSES");
+			fishBody.LinearVelocity = -fishBody.LinearVelocity;
+
+			// Perform the rotation (same as before)
+			Vector3 rotation = fishBody.Rotation;
+			rotation.Y += Mathf.DegToRad(180);
+			fishBody.Rotation = rotation;
+		}
 	}
 
 	void MeChocao(Node choque){
-		//GD.Print("ME CHOCAO CON: ", choque.Name); PARAMONTSE GD.Print para pintar cosicas
-
-		fishBody.LinearVelocity = -fishBody.LinearVelocity;
-		fishBody.GlobalRotation = fishBody.GlobalRotation + new Vector3(0,180,0);
-
-
-
+		GD.Print("ME CHOCAO CON: ", choque.Name);
 	}
 }

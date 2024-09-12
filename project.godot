@@ -25,3 +25,8 @@ project/assembly_name="Tanquera"
 3d_physics/layer_2="Walls"
 3d_physics/layer_3="Fishes"
 3d_physics/layer_5="Atrezzo"
+
+[physics]
+
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0

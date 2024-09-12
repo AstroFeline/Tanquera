@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://dtt2ygviijks6"]
+[gd_scene load_steps=19 format=4 uid="uid://dtt2ygviijks6"]
 
 [ext_resource type="Script" path="res://Game/Scripts/Fishes/IFish.cs" id="1_ojrmx"]
 [ext_resource type="Script" path="res://Game/Scripts/Fishes/Behaviours/PingPongMovement.cs" id="1_ov1ml"]
+[ext_resource type="Texture2D" uid="uid://bc5x74oq43g6n" path="res://Resources/Textures/DeadEyes.png" id="3_11ru0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d21tg"]
 resource_name = "Betta_Main"
@@ -422,6 +423,12 @@ _data = {
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4b652"]
 points = PackedVector3Array(0.000127777, 0.0335129, 0.0168577, -0.000757092, 0.0335129, 0.0168577, 0.000127777, 0.0344023, -0.0177403, 0.0160992, -0.00552004, -0.0150784, -0.0158437, -0.00552004, -0.0150784, 0.0107744, -0.0117291, 0.0106466, -0.0114068, -0.0126185, 0.00975931, -0.000757092, 0.0388437, 0.0150831, -0.000757092, 0.01045, 0.0168577, -0.000757092, 0.0379543, -0.0124165, -0.0149557, -0.00108423, -0.00709265, 0.0109441, 0.00426633, 0.00535297, 0.0054495, -0.0170543, -0.00443074, 0.000127777, 0.00957173, -0.0177403, 0.000127777, 0.0388437, 0.0150831, -0.0122054, -0.000239817, 0.00572316, 0.000127777, 0.0379543, -0.0124165, 0.0125441, -0.00817708, 0.00887201, 0.0152112, -0.00196805, -0.00886725, 0.00988636, -0.0143917, 0.00798471, -0.00519395, -0.0170543, -0.00443074, -0.000757092, -0.0179437, 0.000886294, -0.0158437, -0.00285744, -0.0133038, -0.0096308, -0.0126185, 0.0106466, -0.0122885, -0.0126185, 0.00798471, 0.0116624, -0.0135023, 0.0053228, -0.000757092, 0.0344023, -0.0177403, -0.0122885, -0.0117291, 0.00887201, -0.0096308, -0.0143917, 0.00798471, -0.0158437, -0.00639831, -0.0141911, 0.0160992, -0.00463065, -0.0150784, 0.00899523, -0.0126185, 0.0106466)
 
+[sub_resource type="SphereMesh" id="SphereMesh_dwkfi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pavs4"]
+albedo_texture = ExtResource("3_11ru0")
+uv1_offset = Vector3(0.255, 0, 0)
+
 [node name="Normie" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
 collision_layer = 4
@@ -430,6 +437,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
+lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_ojrmx")
@@ -499,7 +507,26 @@ libraries = {
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_4b652")
 
-[node name="PingPongMovement" type="Node3D" parent="." node_paths=PackedStringArray("fishBody")]
+[node name="PingPongMovement" type="Node3D" parent="." node_paths=PackedStringArray("laser", "fishBody")]
 script = ExtResource("1_ov1ml")
+laser = NodePath("../Laser_RayCast3D")
 fishBody = NodePath("..")
 SwimSpeed = 16.0
+
+[node name="Laser_RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1.38836)
+target_position = Vector3(0, -4, 0)
+collision_mask = 23
+
+[node name="DeadEyes" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DeadEyes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.758198, 0.563888, 0.874739)
+mesh = SubResource("SphereMesh_dwkfi")
+surface_material_override/0 = SubResource("StandardMaterial3D_pavs4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DeadEyes"]
+transform = Transform3D(-1.02011, 0, -0.273337, 0, 1.05609, 0, 0.273337, 0, -1.02011, -0.753743, 0.580477, 1.0164)
+mesh = SubResource("SphereMesh_dwkfi")
+surface_material_override/0 = SubResource("StandardMaterial3D_pavs4")
