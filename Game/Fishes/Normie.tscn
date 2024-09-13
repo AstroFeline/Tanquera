@@ -507,9 +507,8 @@ libraries = {
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_4b652")
 
-[node name="PingPongMovement" type="Node3D" parent="." node_paths=PackedStringArray("laser", "fishBody")]
+[node name="PingPongMovement" type="Node3D" parent="." node_paths=PackedStringArray("fishBody")]
 script = ExtResource("1_ov1ml")
-laser = NodePath("../Laser_RayCast3D")
 fishBody = NodePath("..")
 SwimSpeed = 16.0
 
