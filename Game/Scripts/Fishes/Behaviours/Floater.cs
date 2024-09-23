@@ -35,22 +35,22 @@ public partial class Floater : Node3D
 		float currentHigh=Body.GlobalPosition.Y;
 		if(currentHigh>HappyHigh-HappyHighMargin && currentHigh<HappyHigh+HappyHighMargin){
 			Body.LinearVelocity= new Vector3(
-				Body.LinearVelocity.X,0,0
+				0,0,Body.LinearVelocity.Z
 			);
 			GD.Print("Soyfelissss");
 		}
 		if(currentHigh<HappyHigh-HappyHighMargin) {
 			Body.LinearVelocity= new Vector3(
-				Body.LinearVelocity.X,HappySpeed,0
+				0,HappySpeed,Body.LinearVelocity.Z
 			);
 			GD.Print("AMUUUUNT");
 		}
 
 		if(currentHigh>HappyHigh+HappyHighMargin) {
 			Body.LinearVelocity= new Vector3(
-				Body.LinearVelocity.X,-HappySpeed,0
+				0,-HappySpeed,Body.LinearVelocity.Z
 			);
-			GD.Print("ABAIXXXXXX");
+			GD.Print("Soyfelissss");
 		}
 
 	}
