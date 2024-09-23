@@ -37,31 +37,24 @@ public partial class Floater : Node3D
 			Body.LinearVelocity= new Vector3(
 				0,0,Body.LinearVelocity.Z
 			);
-			GD.Print("Soyfelissss");
 		}
 		if(currentHigh<HappyHigh-HappyHighMargin) {
 			Body.LinearVelocity= new Vector3(
 				0,HappySpeed,Body.LinearVelocity.Z
 			);
-			GD.Print("AMUUUUNT");
 		}
 
 		if(currentHigh>HappyHigh+HappyHighMargin) {
 			Body.LinearVelocity= new Vector3(
 				0,-HappySpeed,Body.LinearVelocity.Z
 			);
-			GD.Print("Soyfelissss");
 		}
+
+		//MIRA HACIA DONDE VAS, HOMBRE
+		Vector3 direction = Body.LinearVelocity.Normalized();
+
+		Body.LookAt(Body.GlobalTransform.Origin + direction, Vector3.Up); // LookAt es un 'pon esto mirando palla' de godot, primer parametro es hacia donde, segundo parametro es en que eje* (*Vector3.Up)
+		Body.RotateObjectLocal(Vector3.Up, System.MathF.PI); // Esto es una rareza de godot, que decidieron que hacia delante es con la flecha de Z mirando hacia atras
 
 	}
 }
-// extends Node3D
-
-
-
-// # Called every frame. 'delta' is the elapsed time since the previous frame.
-// func _physics_process(delta: float) -> void:
-// 	if(Input.is_action_pressed("Up")):
-// 		print("Up")
-// 	if(Input.is_action_pressed("Down")):
-// 		print("Down")
