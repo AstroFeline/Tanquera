@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://x3rpkedabitf"]
+[gd_scene load_steps=14 format=3 uid="uid://x3rpkedabitf"]
 
 [ext_resource type="PackedScene" uid="uid://dtt2ygviijks6" path="res://Game/Fishes/Normie.tscn" id="1_ogrhp"]
 [ext_resource type="PackedScene" uid="uid://dm4115jaovloi" path="res://Game/Boat/Boat.glb" id="2_22uxd"]
-[ext_resource type="Script" path="res://Game/Scripts/Fishes/Behaviours/imputs.gd" id="3_450eu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uyy1s"]
 
@@ -59,7 +58,7 @@ size = 57.891
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 43.1412)
 
 [node name="Normie" parent="." instance=ExtResource("1_ogrhp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26396, 10.4592, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.264, -2.01034, 3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0poln")
@@ -113,6 +112,3 @@ gravity_scale = 0.0
 
 [node name="Root Scene" parent="Boat" instance=ExtResource("2_22uxd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.7066, 38.5054)
-
-[node name="Imputs" type="Node3D" parent="."]
-script = ExtResource("3_450eu")
